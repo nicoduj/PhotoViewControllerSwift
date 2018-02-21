@@ -50,7 +50,7 @@ open class PhotoViewControllerSwift : UIViewController
      */
     public var myImage : UIImage!
     
-    private var imageView : UIImageView!
+    public var imageView : UIImageView!
     
     override open func viewDidLoad()
     {
@@ -135,7 +135,7 @@ open class PhotoViewControllerSwift : UIViewController
     
     
     
-    private func centerScrollViewContents() {
+    public func centerScrollViewContents() {
         
         let boundsSize = self.myView.bounds.size;
         var contentsFrame = self.imageView.frame;
