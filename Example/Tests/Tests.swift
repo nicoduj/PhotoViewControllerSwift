@@ -2,49 +2,56 @@
 
 import Quick
 import Nimble
-import PhotoViewControllerSwift
+@testable import PhotoViewControllerSwift
 
-class TableOfContentsSpec: QuickSpec {
+class PhotoViewControllerSwiftSpec: QuickSpec {
+    
     override func spec() {
-        describe("these will fail") {
+        
+        var pvc : PhotoViewControllerSwift!
+        
+        beforeEach {
 
-            it("can do maths") {
-                expect(1) == 2
-            }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            // 2. Use the storyboard to instantiate the view controller.
+            pvc = storyboard.instantiateViewController(
+                    withIdentifier: "TestViewController") as! PhotoViewControllerSwift
 
-            it("can read") {
-                expect("number") == "string"
-            }
+            
+        }
+        
+        describe("SampleView Test") {
+            
 
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
+            
+            beforeEach {
+                let _ = pvc.view
+                /*
+                pvc = UIStoryboard(name: "Main", bundle:
+                    nil).instantiateViewController(withIdentifier:
+                        "TestViewController") as! PhotoViewControllerSwift
+                _ = pvc.view*/
+                
             }
             
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
+            
+            
+            context("when the view loaded") {
+                it("Verifying the valid views") {
+                    expect(pvc.myView) !== nil
                 }
-
-                it("can read") {
-                    expect("🐮") == "🐮"
+                
+                it("Verifying that the image is set") {
+                    expect(pvc.myImage) !== nil
                 }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    DispatchQueue.main.async {
-                        time = "done"
-                    }
-
-                    waitUntil { done in
-                        Thread.sleep(forTimeInterval: 0.5)
-                        expect(time) == "done"
-
-                        done()
-                    }
+                
+                it("Verifying that the image is set in the view") {
+                    expect(pvc.myView.subviews.count ) > 0
                 }
             }
+            
+            
         }
+        
     }
 }

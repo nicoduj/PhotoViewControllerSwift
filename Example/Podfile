@@ -4,7 +4,7 @@ target 'PhotoViewControllerSwift_Example' do
   pod 'PhotoViewControllerSwift', :path => '../'
 
   target 'PhotoViewControllerSwift_Tests' do
-    inherit! :search_paths
+    pod 'PhotoViewControllerSwift', :path => '../'
 
     pod 'Quick', '~> 1.2.0'
     pod 'Nimble', '~> 7.0.2'
